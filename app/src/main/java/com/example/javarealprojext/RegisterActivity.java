@@ -27,7 +27,6 @@ public class RegisterActivity extends AppCompatActivity {
     EditText editPass2;
     FirebaseAuth regAuth;
     DatabaseReference dr;
-    Button bnttt;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register_main);
