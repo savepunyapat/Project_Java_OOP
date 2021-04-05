@@ -13,6 +13,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class MenuActivity extends AppCompatActivity {
     Button btnUser;
     Button btnShow;
+    Button btnLogin;
     DatabaseReference db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,9 +27,18 @@ public class MenuActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MenuActivity.this,LoginActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
     private void init(){
         btnUser = (Button) findViewById(R.id.btnUser);
         btnShow = (Button) findViewById(R.id.btnShow);
+        btnLogin = (Button) findViewById(R.id.btnLogin);
     }
 }
