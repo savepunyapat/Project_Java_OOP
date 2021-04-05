@@ -22,7 +22,6 @@ public class ShowActivity extends AppCompatActivity {
         UserData.add("Man");
         ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,UserData);
         listview.setAdapter(arrayAdapter);
-
     }
     private void init(){
 
