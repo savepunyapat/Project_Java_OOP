@@ -94,7 +94,7 @@ public class RegisterActivity extends AppCompatActivity {
                             String stremail = editEmail.getText().toString().trim();
                             String strpss = editPass1.getText().toString().trim();
                             UserCreate u1 = new UserCreate(stremail,strpss);
-                            dr.child("Gangs").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(strpss);
+                            dr.child("Admins").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(strpss);
                             Toast.makeText(RegisterActivity.this,"Success",Toast.LENGTH_LONG).show();
 
                         }else {
