@@ -1,4 +1,11 @@
 package com.example.javarealprojext;
+import java.text.DateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,6 +22,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class LoginActivity extends AppCompatActivity {
     Button btnLogin;
@@ -22,7 +31,8 @@ public class LoginActivity extends AppCompatActivity {
     EditText editEmail;
     EditText editPwd;
     FirebaseAuth mAuth;
-
+    DatabaseReference db;
+    List<String> listTime;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,14 +42,16 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 mAuth = FirebaseAuth.getInstance();
+                db = FirebaseDatabase.getInstance().getReference();
                 userLogin();
+
                 Intent intent = new Intent(LoginActivity.this,BookingActivity.class);
             }
         });
         btnReg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this,MenuActivity.class);
+                Intent intent = new Intent(LoginActivity.this,RegisterActivity.class);
                 startActivity(intent);
             }
         });
@@ -78,6 +90,11 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
+                    Date currentTime = Calendar.getInstance().getTime();
+                    listTime = new ArrayList<String>();
+                    String formattedDate = DateFormat.getDateInstance().format(currentTime);
+                    listTime.add(currentTime.toString());
+                    db.child("User").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).push().setValue(listTime);
                     Toast.makeText(LoginActivity.this,"Login Success",Toast.LENGTH_LONG).show();
                 }else {
                     Toast.makeText(LoginActivity.this,"Error!",Toast.LENGTH_LONG).show();
