@@ -85,7 +85,13 @@ public class RegisterActivity extends AppCompatActivity {
             editEmail.requestFocus();
             return;
         }
-
+        if(pass1 != pass2){
+            editPass1.setError("Input same Password");
+            editPass1.requestFocus();
+            editPass2.setError("Input same Password");
+            editPass2.requestFocus();
+            return;
+        }
         regAuth.createUserWithEmailAndPassword(email,pass1)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override

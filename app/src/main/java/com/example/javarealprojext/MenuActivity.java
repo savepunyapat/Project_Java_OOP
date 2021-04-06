@@ -39,6 +39,6 @@ public class MenuActivity extends AppCompatActivity {
     private void init(){
         btnUser = (Button) findViewById(R.id.btnUser);
         btnShow = (Button) findViewById(R.id.btnShow);
-        btnLogin = (Button) findViewById(R.id.btnLogin);
+        btnLogin = (Button) findViewById(R.id.btnGoLogin);
     }
 }

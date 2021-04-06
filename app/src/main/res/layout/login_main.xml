@@ -81,10 +81,10 @@
                 android:text="login" />
 
             <Button
-                android:id="@+id/btnBackLogin"
+                android:id="@+id/btnGoReg"
                 android:layout_width="231dp"
                 android:layout_height="wrap_content"
-                android:text="back" />
+                android:text="Register" />
         </LinearLayout>
 
     </LinearLayout>

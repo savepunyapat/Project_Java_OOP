@@ -18,7 +18,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginActivity extends AppCompatActivity {
     Button btnLogin;
-    Button btnBack;
+    Button btnReg;
     EditText editEmail;
     EditText editPwd;
     FirebaseAuth mAuth;
@@ -33,9 +33,10 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 mAuth = FirebaseAuth.getInstance();
                 userLogin();
+                Intent intent = new Intent(LoginActivity.this,BookingActivity.class);
             }
         });
-        btnBack.setOnClickListener(new View.OnClickListener() {
+        btnReg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(LoginActivity.this,MenuActivity.class);
@@ -44,7 +45,7 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
     private void init(){
-        btnBack = (Button) findViewById(R.id.btnBackLogin);
+        btnReg = (Button) findViewById(R.id.btnGoReg);
         btnLogin = (Button) findViewById(R.id.btnLogin);
         editEmail = (EditText) findViewById(R.id.editEmailLogin);
         editPwd = (EditText) findViewById(R.id.editPasswordLogin);
