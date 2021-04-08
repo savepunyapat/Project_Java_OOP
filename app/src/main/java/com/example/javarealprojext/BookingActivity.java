@@ -140,19 +140,21 @@ public class BookingActivity extends Activity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         String post = snapshot.child(dateSelect.get(datePost)+ " " +monthSelect.get(monthPost)).child("Room1").getValue(String.class);
-                        post = post.toUpperCase();
+
                         st1.setText("Status : "+post);
-                        if (post.equals(("FULL"))){
-                            img1.setImageResource(image[1]);
+                        if (post != null){
+                            post.toUpperCase();
+                            if (post.equals(("Full"))) {
+                                img1.setImageResource(image[1]);
+                        }
+
                         }
                     }
-
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-                        st1.setText("");
+
                     }
                 });
-
             }
         });
     }
