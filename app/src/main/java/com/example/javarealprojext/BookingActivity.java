@@ -141,12 +141,15 @@ public class BookingActivity extends Activity {
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         String post = snapshot.child(dateSelect.get(datePost)+ " " +monthSelect.get(monthPost)).child("Room1").getValue(String.class);
 
-                        st1.setText("Status : "+post);
+
                         if (post != null){
                             post.toUpperCase();
                             if (post.equals(("Full"))) {
+                                st1.setText("Status : "+post);
                                 img1.setImageResource(image[1]);
-                        }
+                            }else {
+                                st1.setText("Status : Available");
+                            }
 
                         }
                     }
