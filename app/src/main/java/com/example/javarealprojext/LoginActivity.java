@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Handler;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -46,11 +47,13 @@ public class LoginActivity extends AppCompatActivity {
                 userLogin();
 
                 Intent intent = new Intent(LoginActivity.this,BookingActivity.class);
+                startActivity(intent);
             }
         });
         btnReg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent intent = new Intent(LoginActivity.this,RegisterActivity.class);
                 startActivity(intent);
             }

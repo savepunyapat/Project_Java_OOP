@@ -28,6 +28,9 @@
         <activity android:name=".BookingActivity">
 
         </activity>
+        <activity android:name=".BookingMenu">
+
+        </activity>
     </application>
 
 </manifest>
