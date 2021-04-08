@@ -45,7 +45,7 @@ public class BookingActivity extends Activity {
     private ImageView img2;
     private ImageView img3;
     DatabaseReference db;
-
+    private Button bhh;
     private TextView searchR;
     private Spinner dateSpinner;
     private Spinner monthSpinner;
