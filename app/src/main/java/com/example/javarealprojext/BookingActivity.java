@@ -35,6 +35,8 @@ public class BookingActivity extends Activity {
     private int monthPost;
     private LinearLayout shownTable;
     private LinearLayout LayOne;
+    private LinearLayout LayTwo;
+    private LinearLayout LayThree;
     private TextView time1;
     private TextView time2;
     private TextView time3;
@@ -99,6 +101,8 @@ public class BookingActivity extends Activity {
         img3 = (ImageView) findViewById(R.id.imageShow3);
         shownTable = (LinearLayout) findViewById(R.id.LayoutHide);
         LayOne = (LinearLayout) findViewById(R.id.Lay1);
+        LayTwo = (LinearLayout) findViewById(R.id.Lay2);
+        LayThree = (LinearLayout) findViewById(R.id.Lay3);
     }
     private  void SpinnerAndSearch(){
 
@@ -139,19 +143,41 @@ public class BookingActivity extends Activity {
                 db.child("Date").addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        String post = snapshot.child(dateSelect.get(datePost)+ " " +monthSelect.get(monthPost)).child("Room1").getValue(String.class);
+                        String post = snapshot.child(dateSelect.get(datePost) + " " + monthSelect.get(monthPost)).child("Room1").getValue(String.class);
+                        String post2 = snapshot.child(dateSelect.get(datePost) + " " + monthSelect.get(monthPost)).child("Room2").getValue(String.class);
+                        String post3 = snapshot.child(dateSelect.get(datePost) + " " + monthSelect.get(monthPost)).child("Room3").getValue(String.class);
 
 
-                        if (post != null){
+                        if (post != null) {
                             post.toUpperCase();
                             if (post.equals(("Full"))) {
-                                st1.setText("Status : "+post);
+                                st1.setText("Status : " + post);
                                 img1.setImageResource(image[1]);
-                            }else {
+                            } else {
                                 st1.setText("Status : Available");
+                            }
+                        }
+                        if (post2 != null) {
+                            post2.toUpperCase();
+                                if (post2.equals(("Full"))) {
+                                    st2.setText("Status : " + post2);
+                                    img2.setImageResource(image[1]);
+                                } else {
+                                    st2.setText("Status : Available");
+                                }
+
+                            }
+                        if (post3 != null) {
+                            post3.toUpperCase();
+                            if (post3.equals(("Full"))) {
+                                st3.setText("Status : " + post3);
+                                img3.setImageResource(image[1]);
+                            } else {
+                                st3.setText("Status : Available");
                             }
 
                         }
+
                     }
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
@@ -159,6 +185,7 @@ public class BookingActivity extends Activity {
                     }
                 });
             }
+
         });
     }
     public void bookMenu(){
@@ -168,25 +195,72 @@ public class BookingActivity extends Activity {
         LayOne.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder builder =
-                        new AlertDialog.Builder(BookingActivity.this);
+                AlertDialog.Builder builder = new AlertDialog.Builder(BookingActivity.this);
                 builder.setMessage("คุณจะจองห้องซ้อมใข่หรือไม่?");
-                builder.setPositiveButton("รับ", new DialogInterface.OnClickListener() {
+                builder.setPositiveButton("ใช่", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         Toast.makeText(getApplicationContext(),
                                 "จองแล้ว", Toast.LENGTH_SHORT).show();
                         db.child("Date").child(dateSelect.get(datePost)+ " " +monthSelect.get(monthPost)).child("Room1").setValue("Full");
                     }
                 });
-                builder.setNegativeButton("ไม่รับ", new DialogInterface.OnClickListener() {
+                builder.setNegativeButton("ไม่่", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(BookingActivity.this,"ไม่จองไอโง่",Toast.LENGTH_LONG).show();
+                        //Toast.makeText(BookingActivity.this,"ไม่จองไอโง่",Toast.LENGTH_LONG).show();
+
                     }
                 });
                 builder.show();
             }
         });
+        LayTwo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(BookingActivity.this);
+                builder.setMessage("คุณจะจองห้องซ้อมใข่หรือไม่?");
+                builder.setPositiveButton("ใช่", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        Toast.makeText(getApplicationContext(),
+                                "จองแล้ว", Toast.LENGTH_SHORT).show();
+                        db.child("Date").child(dateSelect.get(datePost)+ " " +monthSelect.get(monthPost)).child("Room2").setValue("Full");
+                    }
+                });
+                builder.setNegativeButton("ไม่่", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //Toast.makeText(BookingActivity.this,"ไม่จองไอโง่",Toast.LENGTH_LONG).show();
+
+                    }
+                });
+                builder.show();
+            }
+        });
+        LayThree.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(BookingActivity.this);
+                builder.setMessage("คุณจะจองห้องซ้อมใข่หรือไม่?");
+                builder.setPositiveButton("ใช่", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        Toast.makeText(getApplicationContext(),
+                                "จองแล้ว", Toast.LENGTH_SHORT).show();
+                        db.child("Date").child(dateSelect.get(datePost)+ " " +monthSelect.get(monthPost)).child("Room3").setValue("Full");
+                    }
+                });
+                builder.setNegativeButton("ไม่่", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //Toast.makeText(BookingActivity.this,"ไม่จองไอโง่",Toast.LENGTH_LONG).show();
+
+                    }
+                });
+                builder.show();
+            }
+        });
+
+
+
         img1.setImageResource(image[0]);
         img2.setImageResource(image[0]);
         img3.setImageResource(image[0]);
