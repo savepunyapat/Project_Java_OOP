@@ -20,8 +20,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class BookingActivity extends Activity {
     private int datePost;
@@ -37,6 +44,7 @@ public class BookingActivity extends Activity {
     private ImageView img1;
     private ImageView img2;
     private ImageView img3;
+    DatabaseReference db;
 
     private TextView searchR;
     private Spinner dateSpinner;
@@ -127,28 +135,48 @@ public class BookingActivity extends Activity {
             @Override
             public void onClick(View v) {
                 bookMenu();
+                db = FirebaseDatabase.getInstance().getReference();
+                db.child("Date").addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        String post = snapshot.child(dateSelect.get(datePost)+ " " +monthSelect.get(monthPost)).child("Room1").getValue(String.class);
+                        post = post.toUpperCase();
+                        st1.setText("Status : "+post);
+                        if (post.equals(("FULL"))){
+                            img1.setImageResource(image[1]);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        st1.setText("");
+                    }
+                });
 
             }
         });
     }
     public void bookMenu(){
         shownTable.setVisibility(View.VISIBLE);
+        db = FirebaseDatabase.getInstance().getReference();
+
         LayOne.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder builder =
                         new AlertDialog.Builder(BookingActivity.this);
-                builder.setMessage("รับขนมจีบซาลาเปาเพิ่มมั้ยครับ?");
+                builder.setMessage("คุณจะจองห้องซ้อมใข่หรือไม่?");
                 builder.setPositiveButton("รับ", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         Toast.makeText(getApplicationContext(),
-                                "ขอบคุณครับ", Toast.LENGTH_SHORT).show();
+                                "จองแล้ว", Toast.LENGTH_SHORT).show();
+                        db.child("Date").child(dateSelect.get(datePost)+ " " +monthSelect.get(monthPost)).child("Room1").setValue("Full");
                     }
                 });
                 builder.setNegativeButton("ไม่รับ", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        //dialog.dismiss();
+                        Toast.makeText(BookingActivity.this,"ไม่จองไอโง่",Toast.LENGTH_LONG).show();
                     }
                 });
                 builder.show();
