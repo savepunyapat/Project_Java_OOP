@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -22,11 +23,22 @@ import androidx.appcompat.app.AppCompatActivity;
 public class BookingActivity extends Activity {
     private int datePost;
     private int monthPost;
+    private TextView time1;
+    private TextView time2;
+    private TextView time3;
+    private TextView st1;
+    private TextView st2;
+    private TextView st3;
+    private ImageView img1;
+    private ImageView img2;
+    private ImageView img3;
+
     private TextView searchR;
     private Spinner dateSpinner;
     private Spinner monthSpinner;
     private Button  searchButton;
-
+    String roomStatus[] = {"ว่าง", "ไม่ว่าง"};
+    int image[] = {R.drawable.free, R.drawable.unfree_};
 
     private ArrayList<String> dateSelect = new ArrayList<String>();
     private ArrayList<String> monthSelect = new ArrayList<String>();
@@ -65,7 +77,15 @@ public class BookingActivity extends Activity {
         dateSpinner = (Spinner) findViewById(R.id.dateShow);
         monthSpinner = (Spinner) findViewById(R.id.monthShow);
         searchButton = (Button) findViewById(R.id.BtnSearch);
-        searchR = (TextView) findViewById(R.id.searchResult);
+        time1 = (TextView) findViewById(R.id.timeShow1);
+        time2 = (TextView) findViewById(R.id.timeShow2);
+        time3 = (TextView) findViewById(R.id.timeShow3);
+        st1 = (TextView) findViewById(R.id.statusShow1);
+        st2 = (TextView) findViewById(R.id.statusShow2);
+        st3 = (TextView) findViewById(R.id.statusShow3);
+        img1 = (ImageView) findViewById(R.id.imageShow1);
+        img2 = (ImageView) findViewById(R.id.imageShow2);
+        img3 = (ImageView) findViewById(R.id.imageShow3);
     }
     private  void SpinnerAndSearch(){
 
@@ -101,13 +121,21 @@ public class BookingActivity extends Activity {
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               String outputSearch = dateSelect.get(datePost) + " " +  monthSelect.get(monthPost)+" 2021";
-               searchR.setText(outputSearch);
-               Intent intent = new Intent(BookingActivity.this,BookingMenu.class);
-               startActivity(intent);
+                bookMenu();
 
             }
         });
+    }
+    public void bookMenu(){
+        img1.setImageResource(image[0]);
+        img2.setImageResource(image[0]);
+        img3.setImageResource(image[0]);
+        time1.setText("18.00 - 20.00");
+        time2.setText("20.00 - 22.00");
+        time3.setText("22.00 - 00.00");
+        st1.setText("Status : ว่าง");
+        st2.setText("Status : ว่าง");
+        st3.setText("Status : ว่าง");
     }
 
 }

@@ -46,8 +46,7 @@ public class LoginActivity extends AppCompatActivity {
                 db = FirebaseDatabase.getInstance().getReference();
                 userLogin();
 
-                Intent intent = new Intent(LoginActivity.this,BookingActivity.class);
-                startActivity(intent);
+
             }
         });
         btnReg.setOnClickListener(new View.OnClickListener() {
@@ -89,6 +88,7 @@ public class LoginActivity extends AppCompatActivity {
             editPwd.requestFocus();
             return;
         }
+
         mAuth.signInWithEmailAndPassword(email,pwd).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -99,6 +99,8 @@ public class LoginActivity extends AppCompatActivity {
                     listTime.add(currentTime.toString());
                     db.child("User").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).push().setValue(listTime);
                     Toast.makeText(LoginActivity.this,"Login Success",Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(LoginActivity.this,BookingActivity.class);
+                    startActivity(intent);
                 }else {
                     Toast.makeText(LoginActivity.this,"Error!",Toast.LENGTH_LONG).show();
                 }

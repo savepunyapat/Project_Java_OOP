@@ -6,13 +6,13 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="272dp"
+        android:layout_height="97dp"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/textView9"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="101dp"
             android:gravity="center"
             android:text="Room Booking"
             android:textSize="24sp" />
@@ -82,7 +82,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="90dp"
+        android:layout_height="105dp"
         android:gravity="center"
         android:orientation="vertical">
 
@@ -103,19 +103,180 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/searchResult"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="212dp"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            android:orientation="vertical">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
+                    <ImageView
+                        android:id="@+id/imageShow1"
+                        android:layout_width="75dp"
+                        android:layout_height="75dp"
+                        android:src="@mipmap/ic_launcher" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/timeShow1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:text="เลือกวันที่"
+                            android:textColor="#000"
+                            android:textSize="20sp"></TextView>
+
+                        <TextView
+                            android:id="@+id/statusShow1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:text="Status : TBA"
+                            android:textColor="#000"
+                            android:textSize="14sp"></TextView>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/imageShow2"
+                        android:layout_width="75dp"
+                        android:layout_height="75dp"
+                        android:src="@mipmap/ic_launcher" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/timeShow2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:text="เลือกวันที่"
+                            android:textColor="#000"
+                            android:textSize="20sp"></TextView>
+
+                        <TextView
+                            android:id="@+id/statusShow2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:text="Status : TBA"
+                            android:textColor="#000"
+                            android:textSize="14sp"></TextView>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/imageShow3"
+                        android:layout_width="75dp"
+                        android:layout_height="75dp"
+                        android:src="@mipmap/ic_launcher" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/timeShow3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:text="เลือกวันที่"
+                            android:textColor="#000"
+                            android:textSize="20sp"></TextView>
+
+                        <TextView
+                            android:id="@+id/statusShow3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:text="Status : TBA"
+                            android:textColor="#000"
+                            android:textSize="14sp"></TextView>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="226dp"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btn1"
+                android:layout_width="match_parent"
+                android:layout_height="78dp"
+                android:autoText="false"
+                android:fontFamily="@font/benchnine_bold"
+                android:freezesText="false"
+                android:text="Book"
+                android:textSize="20sp"
+                app:backgroundTint="#4CAF50" />
+
+            <Button
+                android:id="@+id/btn2"
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:text="Book"
+                app:backgroundTint="#4CAF50" />
+
+            <Button
+                android:id="@+id/btn3"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:text="Button"
+                app:backgroundTint="#4CAF50" />
+
+        </LinearLayout>
 
     </LinearLayout>
 
