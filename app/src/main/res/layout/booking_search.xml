@@ -97,24 +97,29 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Search"
-                app:backgroundTint="#3F51B5" />
+                app:backgroundTint="#3F51B5"
+                app:backgroundTintMode="add" />
         </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/LayoutHide"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center_horizontal"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:visibility="invisible">
+
 
         <LinearLayout
-            android:layout_width="212dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <LinearLayout
+                android:id="@+id/Lay1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
                 android:orientation="horizontal">
 
                 <LinearLayout
@@ -124,12 +129,12 @@
 
                     <ImageView
                         android:id="@+id/imageShow1"
-                        android:layout_width="75dp"
+                        android:layout_width="140dp"
                         android:layout_height="75dp"
                         android:src="@mipmap/ic_launcher" />
 
                     <LinearLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="136dp"
                         android:layout_height="match_parent"
                         android:orientation="vertical">
 
@@ -159,6 +164,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:gravity="center_horizontal"
                 android:orientation="horizontal">
 
                 <LinearLayout
@@ -168,12 +174,12 @@
 
                     <ImageView
                         android:id="@+id/imageShow2"
-                        android:layout_width="75dp"
+                        android:layout_width="140dp"
                         android:layout_height="75dp"
                         android:src="@mipmap/ic_launcher" />
 
                     <LinearLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="136dp"
                         android:layout_height="match_parent"
                         android:orientation="vertical">
 
@@ -203,6 +209,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:gravity="center_horizontal"
                 android:orientation="horizontal">
 
                 <LinearLayout
@@ -212,12 +219,12 @@
 
                     <ImageView
                         android:id="@+id/imageShow3"
-                        android:layout_width="75dp"
+                        android:layout_width="140dp"
                         android:layout_height="75dp"
                         android:src="@mipmap/ic_launcher" />
 
                     <LinearLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="136dp"
                         android:layout_height="match_parent"
                         android:orientation="vertical">
 
@@ -243,38 +250,6 @@
                 </LinearLayout>
 
             </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="226dp"
-            android:orientation="vertical">
-
-            <Button
-                android:id="@+id/btn1"
-                android:layout_width="match_parent"
-                android:layout_height="78dp"
-                android:autoText="false"
-                android:fontFamily="@font/benchnine_bold"
-                android:freezesText="false"
-                android:text="Book"
-                android:textSize="20sp"
-                app:backgroundTint="#4CAF50" />
-
-            <Button
-                android:id="@+id/btn2"
-                android:layout_width="match_parent"
-                android:layout_height="75dp"
-                android:text="Book"
-                app:backgroundTint="#4CAF50" />
-
-            <Button
-                android:id="@+id/btn3"
-                android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:text="Button"
-                app:backgroundTint="#4CAF50" />
 
         </LinearLayout>
 

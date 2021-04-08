@@ -1,5 +1,6 @@
 package com.example.javarealprojext;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.app.Activity;
@@ -9,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -18,11 +20,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class BookingActivity extends Activity {
     private int datePost;
     private int monthPost;
+    private LinearLayout shownTable;
+    private LinearLayout LayOne;
     private TextView time1;
     private TextView time2;
     private TextView time3;
@@ -49,8 +54,6 @@ public class BookingActivity extends Activity {
         init();
         createDate();
         SpinnerAndSearch();
-
-
 
     }
     private void createDate(){
@@ -86,6 +89,8 @@ public class BookingActivity extends Activity {
         img1 = (ImageView) findViewById(R.id.imageShow1);
         img2 = (ImageView) findViewById(R.id.imageShow2);
         img3 = (ImageView) findViewById(R.id.imageShow3);
+        shownTable = (LinearLayout) findViewById(R.id.LayoutHide);
+        LayOne = (LinearLayout) findViewById(R.id.Lay1);
     }
     private  void SpinnerAndSearch(){
 
@@ -127,6 +132,28 @@ public class BookingActivity extends Activity {
         });
     }
     public void bookMenu(){
+        shownTable.setVisibility(View.VISIBLE);
+        LayOne.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder =
+                        new AlertDialog.Builder(BookingActivity.this);
+                builder.setMessage("รับขนมจีบซาลาเปาเพิ่มมั้ยครับ?");
+                builder.setPositiveButton("รับ", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        Toast.makeText(getApplicationContext(),
+                                "ขอบคุณครับ", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                builder.setNegativeButton("ไม่รับ", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //dialog.dismiss();
+                    }
+                });
+                builder.show();
+            }
+        });
         img1.setImageResource(image[0]);
         img2.setImageResource(image[0]);
         img3.setImageResource(image[0]);
