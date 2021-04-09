@@ -54,7 +54,7 @@ public class BookingActivity extends Activity {
     private Spinner dateSpinner;
     private Spinner monthSpinner;
     private Button  searchButton;
-    String roomStatus[] = {"ว่าง", "ไม่ว่าง"};
+    String roomStatus[] = {"Available", "ไม่ว่าง"};
     int image[] = {R.drawable.free, R.drawable.unfree_};
 
     private ArrayList<String> dateSelect = new ArrayList<String>();
@@ -75,7 +75,7 @@ public class BookingActivity extends Activity {
             dateSelect.add(dateText);
         }
         monthSelect.add("January");
-        monthSelect.add("Febuary");
+        monthSelect.add("February");
         monthSelect.add("March");
         monthSelect.add("April");
         monthSelect.add("May");
@@ -154,7 +154,7 @@ public class BookingActivity extends Activity {
                         if (post != null) {
                             post.toUpperCase();
                             if (post.equals(("Full"))) {
-                                st1.setText("Status : " + post);
+                                st1.setText("Status : " + "Unavailable");
                                 img1.setImageResource(image[1]);
                             } else {
                                 st1.setText("Status : Available");
@@ -163,7 +163,7 @@ public class BookingActivity extends Activity {
                         if (post2 != null) {
                             post2.toUpperCase();
                                 if (post2.equals(("Full"))) {
-                                    st2.setText("Status : " + post2);
+                                    st2.setText("Status : " +  "Unavailable");
                                     img2.setImageResource(image[1]);
                                 } else {
                                     st2.setText("Status : Available");
@@ -173,7 +173,7 @@ public class BookingActivity extends Activity {
                         if (post3 != null) {
                             post3.toUpperCase();
                             if (post3.equals(("Full"))) {
-                                st3.setText("Status : " + post3);
+                                st3.setText("Status : " +  "Unavailable");
                                 img3.setImageResource(image[1]);
                             } else {
                                 st3.setText("Status : Available");
@@ -270,9 +270,9 @@ public class BookingActivity extends Activity {
         time1.setText("18.00 - 20.00");
         time2.setText("20.00 - 22.00");
         time3.setText("22.00 - 00.00");
-        st1.setText("Status : ว่าง");
-        st2.setText("Status : ว่าง");
-        st3.setText("Status : ว่าง");
+        st1.setText("Status : Available");
+        st2.setText("Status : Available");
+        st3.setText("Status : Available");
     }
 
 }

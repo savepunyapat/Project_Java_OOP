@@ -13,14 +13,27 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="251dp"
-            android:orientation="vertical" >
+            android:layout_height="223dp"
+            android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/imageView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/logo_sc" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="61dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="ระบบจองห้องซ้อมดนตรี" />
         </LinearLayout>
 
         <LinearLayout

@@ -14,6 +14,8 @@
             android:id="@+id/textView9"
             android:layout_width="match_parent"
             android:layout_height="101dp"
+            android:fontFamily="monospace"
+
             android:gravity="center"
             android:text="ROOM BOOKING"
             android:textSize="24sp" />
@@ -74,7 +76,8 @@
                 android:id="@+id/monthShow"
                 android:layout_width="310dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1">
+                android:layout_weight="1"
+               >
 
             </Spinner>
 
@@ -97,31 +100,35 @@
                 android:layout_width="300dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
+
                 android:elevation="10dp"
-                app:cardBackgroundColor="#03A9F4"
+                app:cardBackgroundColor="#FFFFFF"
                 app:cardCornerRadius="25dp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    >
+
 
                     <TextView
                         android:id="@+id/text"
-                        android:layout_width="93dp"
-                        android:layout_height="35dp"
+                        android:layout_width="99dp"
+                        android:layout_height="34dp"
                         android:layout_alignParentStart="true"
                         android:layout_alignParentTop="true"
                         android:layout_alignParentEnd="true"
                         android:layout_alignParentBottom="true"
-                        android:layout_marginStart="100dp"
-                        android:layout_marginTop="7dp"
-                        android:layout_marginEnd="107dp"
+                        android:layout_marginStart="102dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="100dp"
                         android:layout_marginBottom="8dp"
-                        android:fontFamily="@font/abel"
+                        android:drawableLeft="@drawable/ic_action_search"
+                        android:fontFamily="sans-serif-smallcaps"
                         android:gravity="center"
                         android:text="SEARCH"
-                        android:textColor="#FBFAFA"
-                        android:textSize="24sp" />
+                        android:textColor="#2196F3"
+                        android:textSize="18sp" />
                 </RelativeLayout>
 
             </androidx.cardview.widget.CardView>
@@ -146,6 +153,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
+                android:background="#26000000"
                 android:orientation="horizontal">
 
                 <LinearLayout
@@ -162,7 +170,8 @@
                     <LinearLayout
                         android:layout_width="136dp"
                         android:layout_height="match_parent"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        >
 
                         <TextView
                             android:id="@+id/timeShow1"
@@ -170,7 +179,7 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="5dp"
                             android:text="เลือกวันที่"
-                            android:textColor="#000"
+                            android:textColor="#FFFFFF"
                             android:textSize="20sp"></TextView>
 
                         <TextView
@@ -179,7 +188,7 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="5dp"
                             android:text="Status : TBA"
-                            android:textColor="#000"
+                            android:textColor="#FFFFFF"
                             android:textSize="14sp"></TextView>
 
                     </LinearLayout>
@@ -192,6 +201,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center_horizontal"
+                android:background="#26000000"
                 android:orientation="horizontal">
 
                 <LinearLayout
@@ -216,7 +226,7 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="5dp"
                             android:text="เลือกวันที่"
-                            android:textColor="#000"
+                            android:textColor="#FFFFFF"
                             android:textSize="20sp"></TextView>
 
                         <TextView
@@ -225,7 +235,7 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="5dp"
                             android:text="Status : TBA"
-                            android:textColor="#000"
+                            android:textColor="#FFFFFF"
                             android:textSize="14sp"></TextView>
 
                     </LinearLayout>
@@ -238,6 +248,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center_horizontal"
+                android:background="#26000000"
                 android:orientation="horizontal">
 
                 <LinearLayout
@@ -262,7 +273,7 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="5dp"
                             android:text="เลือกวันที่"
-                            android:textColor="#000"
+                            android:textColor="#FFFFFF"
                             android:textSize="20sp"></TextView>
 
                         <TextView
@@ -271,7 +282,7 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="5dp"
                             android:text="Status : TBA"
-                            android:textColor="#000"
+                            android:textColor="#FFFFFF"
                             android:textSize="14sp"></TextView>
 
                     </LinearLayout>
