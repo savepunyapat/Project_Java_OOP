@@ -7,10 +7,12 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -20,8 +22,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class RegisterActivity extends AppCompatActivity {
-    Button btnBack;
-    Button btnReg;
+    CardView register;
+    CardView backer;
     EditText editEmail;
     EditText editPass1;
     EditText editPass2;
@@ -31,7 +33,7 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register_main);
         init();
-        btnReg.setOnClickListener(new View.OnClickListener() {
+        register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 regAuth = FirebaseAuth.getInstance();
@@ -39,7 +41,7 @@ public class RegisterActivity extends AppCompatActivity {
                 registerUser();
             }
         });
-        btnBack.setOnClickListener(new View.OnClickListener() {
+        backer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(RegisterActivity.this,LoginActivity.class);
@@ -49,8 +51,8 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
     private void init(){
-        btnBack = (Button) findViewById(R.id.btnRegBack);
-        btnReg = (Button) findViewById(R.id.btnRegis);
+        register = (CardView) findViewById(R.id.registerpageBtn);
+        backer = (CardView) findViewById (R.id.backRegisBtn);
         editEmail = (EditText) findViewById(R.id.editEmail);
         editPass1 = (EditText) findViewById(R.id.editPass1);
         editPass2 = (EditText) findViewById(R.id.editPass2);

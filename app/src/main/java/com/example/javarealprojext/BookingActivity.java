@@ -23,6 +23,7 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -33,6 +34,7 @@ import com.google.firebase.database.ValueEventListener;
 public class BookingActivity extends Activity {
     private int datePost;
     private int monthPost;
+    private CardView searchBtn;
     private LinearLayout shownTable;
     private LinearLayout LayOne;
     private LinearLayout LayTwo;
@@ -89,7 +91,8 @@ public class BookingActivity extends Activity {
 
         dateSpinner = (Spinner) findViewById(R.id.dateShow);
         monthSpinner = (Spinner) findViewById(R.id.monthShow);
-        searchButton = (Button) findViewById(R.id.BtnSearch);
+        //searchButton = (Button) findViewById(R.id.BtnSearch);
+        searchBtn = (CardView) findViewById(R.id.search_btn);
         time1 = (TextView) findViewById(R.id.timeShow1);
         time2 = (TextView) findViewById(R.id.timeShow2);
         time3 = (TextView) findViewById(R.id.timeShow3);
@@ -135,7 +138,7 @@ public class BookingActivity extends Activity {
 
             }
         });
-        searchButton.setOnClickListener(new View.OnClickListener() {
+        searchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 bookMenu();

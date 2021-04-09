@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/splash_1">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,7 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="101dp"
             android:gravity="center"
-            android:text="Room Booking"
+            android:text="ROOM BOOKING"
             android:textSize="24sp" />
 
 
@@ -91,14 +92,39 @@
             android:layout_height="69dp"
             android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/BtnSearch"
-                android:layout_width="104dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Search"
-                app:backgroundTint="#3F51B5"
-                app:backgroundTintMode="add" />
+            <androidx.cardview.widget.CardView
+                android:id="@+id/search_btn"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:elevation="10dp"
+                app:cardBackgroundColor="#03A9F4"
+                app:cardCornerRadius="25dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/text"
+                        android:layout_width="93dp"
+                        android:layout_height="35dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginStart="100dp"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginEnd="107dp"
+                        android:layout_marginBottom="8dp"
+                        android:fontFamily="@font/abel"
+                        android:gravity="center"
+                        android:text="SEARCH"
+                        android:textColor="#FBFAFA"
+                        android:textSize="24sp" />
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
         </LinearLayout>
     </LinearLayout>
 

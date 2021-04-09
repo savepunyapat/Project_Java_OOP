@@ -1,23 +1,22 @@
 package com.example.javarealprojext;
 import java.text.DateFormat;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import java.util.logging.Handler;
 
 import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -27,8 +26,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class LoginActivity extends AppCompatActivity {
-    Button btnLogin;
-    Button btnReg;
+    CardView loginB;
+    TextView regisB;
     EditText editEmail;
     EditText editPwd;
     FirebaseAuth mAuth;
@@ -39,7 +38,8 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_main);
         init();
-        btnLogin.setOnClickListener(new View.OnClickListener() {
+
+        loginB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mAuth = FirebaseAuth.getInstance();
@@ -49,7 +49,8 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
-        btnReg.setOnClickListener(new View.OnClickListener() {
+        regisB.setPaintFlags(regisB.getPaintFlags()| Paint.UNDERLINE_TEXT_FLAG);
+        regisB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -59,8 +60,8 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
     private void init(){
-        btnReg = (Button) findViewById(R.id.btnGoReg);
-        btnLogin = (Button) findViewById(R.id.btnLogin);
+        loginB = (CardView) findViewById(R.id.loginBtn);
+        regisB = (TextView) findViewById(R.id.regisTxt);
         editEmail = (EditText) findViewById(R.id.editEmailLogin);
         editPwd = (EditText) findViewById(R.id.editPasswordLogin);
     }
