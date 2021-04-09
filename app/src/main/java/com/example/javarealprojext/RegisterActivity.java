@@ -39,6 +39,8 @@ public class RegisterActivity extends AppCompatActivity {
                 regAuth = FirebaseAuth.getInstance();
                 dr = FirebaseDatabase.getInstance().getReference();
                 registerUser();
+                Intent intent = new Intent(RegisterActivity.this,LoginActivity.class);
+                startActivity(intent);
             }
         });
         backer.setOnClickListener(new View.OnClickListener() {
