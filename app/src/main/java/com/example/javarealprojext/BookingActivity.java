@@ -86,7 +86,6 @@ public class BookingActivity extends Activity {
         init();
         createDate();
         SpinnerAndSearch();
-
     }
     private void createDate(){
         String dateText;
