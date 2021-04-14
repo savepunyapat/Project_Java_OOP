@@ -52,13 +52,19 @@ public class BookingActivity extends Activity {
     private TextView time3;
     private TextView st1;
     private String status;
+    private Button btnUnBook2;
+    private Button btnUnBook3;
     String post;
     String post2;
     String post3;
     private String Biguid;
+    private String Biguid2;
+    private String Biguid3;
     private TextView st2;
     User u1;
-    private String checkUID;
+    private String checkUID1;
+    private String checkUID2;
+    private String checkUID3;
     private TextView st3;
     Button btnUnBook ;
     private ImageView img1;
@@ -107,6 +113,8 @@ public class BookingActivity extends Activity {
         monthSelect.add("December");
     }
     private void init(){
+        btnUnBook2 = (Button) findViewById(R.id.btnUnBook2);
+        btnUnBook3 = (Button) findViewById(R.id.btnUnBook3);
         btnUnBook = (Button) findViewById(R.id.btnUnBook);
         dateSpinner = (Spinner) findViewById(R.id.dateShow);
         monthSpinner = (Spinner) findViewById(R.id.monthShow);
@@ -228,8 +236,8 @@ public class BookingActivity extends Activity {
                             db.addValueEventListener(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                    status = snapshot.child("Date").child(dateSelect.get(datePost)+ " " +monthSelect.get(monthPost)).child("Room1").child("Status").getValue(String.class);
-                                    checkUID = snapshot.child("Date").child(dateSelect.get(datePost)+ " " +monthSelect.get(monthPost)).child("Room1").child("Status").getValue(String.class);
+                                    //status = snapshot.child("Date").child(dateSelect.get(datePost)+ " " +monthSelect.get(monthPost)).child("Room1").child("Status").getValue(String.class);
+                                    checkUID1 = snapshot.child("Date").child(dateSelect.get(datePost)+ " " +monthSelect.get(monthPost)).child("Room1").child("Status").getValue(String.class);
                                 }
 
                                 @Override
@@ -239,7 +247,7 @@ public class BookingActivity extends Activity {
                             });
                             String currID = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-                            if (!currID.equals((checkUID))){
+                            if (!currID.equals((checkUID1))){
                                 Toast.makeText(BookingActivity.this,"Room is Full",Toast.LENGTH_LONG).show();
                             }
                             if (post == null){
@@ -297,42 +305,69 @@ public class BookingActivity extends Activity {
                 builder.setMessage("คุณจะจองห้องซ้อมใข่หรือไม่?");
                 builder.setPositiveButton("ใช่", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        Toast.makeText(getApplicationContext(),
-                                "จองแล้ว", Toast.LENGTH_SHORT).show();
-                        db = FirebaseDatabase.getInstance().getReference();
-                        db.child("Date").child(dateSelect.get(datePost)+ " " +monthSelect.get(monthPost)).child("Room2").child("Status").setValue("Full");
-                        db.child("Date").child(dateSelect.get(datePost)+ " " +monthSelect.get(monthPost)).child("Room2").child("Uid").setValue(FirebaseAuth.getInstance().getCurrentUser().getUid());
-                        return;
+                        db.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                checkUID2 = snapshot.child("Date").child(dateSelect.get(datePost)+ " " +monthSelect.get(monthPost)).child("Room2").child("Status").getValue(String.class);
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+                        String currID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+                        if (!currID.equals((checkUID2))){
+                            Toast.makeText(BookingActivity.this,"Room is Full",Toast.LENGTH_LONG).show();
+                        }
+                        if (post2 == null){
+                            db = FirebaseDatabase.getInstance().getReference();
+                            Toast.makeText(getApplicationContext(), "จองแล้ว", Toast.LENGTH_SHORT).show();
+                            db.child("Date").child(dateSelect.get(datePost) + " " + monthSelect.get(monthPost)).child("Room2").child("Status").setValue("Full");
+                            db.child("Date").child(dateSelect.get(datePost) + " " + monthSelect.get(monthPost)).child("Room2").child("Uid").setValue(FirebaseAuth.getInstance().getCurrentUser().getUid());
+                        }else {
+                            Toast.makeText(BookingActivity.this,"Room is Full",Toast.LENGTH_LONG).show();
+                        }
                     }
                 });
                 builder.setNegativeButton("ไม่่", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        db.addValueEventListener(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot snapshot1) {
-                                String uid = snapshot1.child("Date").child(dateSelect.get(datePost) + " " + monthSelect.get(monthPost)).child("Room2").child("Uid").getValue(String.class);
-                                String CurrId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                                db = FirebaseDatabase.getInstance().getReference();
-                                if (CurrId.equals((uid))){
-                                    db.child("Date").child(dateSelect.get(datePost)+ " " +monthSelect.get(monthPost)).child("Room2").child("Status").setValue(null);
-                                    db.child("Date").child(dateSelect.get(datePost)+ " " +monthSelect.get(monthPost)).child("Room2").child("Uid").setValue(null);
-                                    Toast.makeText(getApplicationContext(),"ถ้าจะจองใหม่ให้restart Appหรือแจ้งAdmin",Toast.LENGTH_LONG).show();
-                                    return;
-                                }
 
-                            }
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError error) {
-                                Toast.makeText(getApplicationContext(),"Somethings went wrong",Toast.LENGTH_LONG).show();
-                            }
-                        });
                     }
                 });
                 builder.show();
 
             }
 
+        });
+        btnUnBook2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                db.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot1) {
+                        Biguid2 = snapshot1.child("Date").child(dateSelect.get(datePost) + " " + monthSelect.get(monthPost)).child("Room2").child("Uid").getValue(String.class);
+
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Toast.makeText(getApplicationContext(),"Somethings went wrong",Toast.LENGTH_LONG).show();
+                    }
+                });
+                String currId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                String uid = Biguid2;
+                if (currId.equals((uid))){
+                    db.child("Date").child(dateSelect.get(datePost)+ " " +monthSelect.get(monthPost)).child("Room2").child("Status").setValue(null);
+                    db.child("Date").child(dateSelect.get(datePost)+ " " +monthSelect.get(monthPost)).child("Room2").child("Uid").setValue(null);
+                    Biguid2 = "";
+                    Toast.makeText(getApplicationContext(),"ยกเลิกสำเร็จ",Toast.LENGTH_LONG).show();
+                    return;
+                }else {
+                    Toast.makeText(BookingActivity.this,"IDผู้ใช้ไม่ตรงกันไม่สามารถยกเลิกได้",Toast.LENGTH_LONG).show();
+                }
+            }
         });
         LayThree.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -341,39 +376,66 @@ public class BookingActivity extends Activity {
                 builder.setMessage("คุณจะจองห้องซ้อมใข่หรือไม่?");
                 builder.setPositiveButton("ใช่", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        Toast.makeText(getApplicationContext(),
-                                "จองแล้ว", Toast.LENGTH_SHORT).show();
-                        db = FirebaseDatabase.getInstance().getReference();
-                        db.child("Date").child(dateSelect.get(datePost)+ " " +monthSelect.get(monthPost)).child("Room3").child("Status").setValue("Full");
-                        db.child("Date").child(dateSelect.get(datePost)+ " " +monthSelect.get(monthPost)).child("Room3").child("Uid").setValue(FirebaseAuth.getInstance().getCurrentUser().getUid());
-                        return;
+                        db.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                checkUID3 = snapshot.child("Date").child(dateSelect.get(datePost)+ " " +monthSelect.get(monthPost)).child("Room3").child("Status").getValue(String.class);
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+                        String currID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+                        if (!currID.equals((checkUID3))){
+                            Toast.makeText(BookingActivity.this,"Room is Full",Toast.LENGTH_LONG).show();
+                        }
+                        if (post2 == null){
+                            db = FirebaseDatabase.getInstance().getReference();
+                            Toast.makeText(getApplicationContext(), "จองแล้ว", Toast.LENGTH_SHORT).show();
+                            db.child("Date").child(dateSelect.get(datePost) + " " + monthSelect.get(monthPost)).child("Room3").child("Status").setValue("Full");
+                            db.child("Date").child(dateSelect.get(datePost) + " " + monthSelect.get(monthPost)).child("Room3").child("Uid").setValue(FirebaseAuth.getInstance().getCurrentUser().getUid());
+                        }else {
+                            Toast.makeText(BookingActivity.this,"Room is Full",Toast.LENGTH_LONG).show();
+                        }
                     }
                 });
                 builder.setNegativeButton("ไม่่", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        db.addValueEventListener(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot snapshot1) {
-                                String uid = snapshot1.child("Date").child(dateSelect.get(datePost) + " " + monthSelect.get(monthPost)).child("Room3").child("Uid").getValue(String.class);
-                                String CurrId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                                db = FirebaseDatabase.getInstance().getReference();
-                                String s1 = uid;
-                                String s2 = CurrId;
-                                if (CurrId.equals((uid))){
-                                    db.child("Date").child(dateSelect.get(datePost)+ " " +monthSelect.get(monthPost)).child("Room3").child("Status").removeValue();
-                                    db.child("Date").child(dateSelect.get(datePost)+ " " +monthSelect.get(monthPost)).child("Room3").child("Uid").removeValue();
-                                    Toast.makeText(getApplicationContext(),"ถ้าจะจองใหม่ให้restart Appหรือแจ้งAdmin",Toast.LENGTH_LONG).show();
-                                }
-                            }
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError error) {
-                                Toast.makeText(getApplicationContext(),"Somethings went wrong",Toast.LENGTH_LONG).show();
-                            }
-                        });
+
                     }
                 });
                 builder.show();
+            }
+        });
+        btnUnBook3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                db.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot1) {
+                        Biguid3 = snapshot1.child("Date").child(dateSelect.get(datePost) + " " + monthSelect.get(monthPost)).child("Room3").child("Uid").getValue(String.class);
+
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Toast.makeText(getApplicationContext(),"Somethings went wrong",Toast.LENGTH_LONG).show();
+                    }
+                });
+                String currId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                String uid = Biguid3;
+                if (currId.equals((uid))){
+                    db.child("Date").child(dateSelect.get(datePost)+ " " +monthSelect.get(monthPost)).child("Room3").child("Status").setValue(null);
+                    db.child("Date").child(dateSelect.get(datePost)+ " " +monthSelect.get(monthPost)).child("Room3").child("Uid").setValue(null);
+                    Biguid2 = "";
+                    Toast.makeText(getApplicationContext(),"ยกเลิกสำเร็จ",Toast.LENGTH_LONG).show();
+                    return;
+                }else {
+                    Toast.makeText(BookingActivity.this,"IDผู้ใช้ไม่ตรงกันไม่สามารถยกเลิกได้",Toast.LENGTH_LONG).show();
+                }
             }
         });
 
