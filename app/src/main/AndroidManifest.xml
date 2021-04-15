@@ -1,31 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.javarealprojext">
-
+    package="com.example.SCMusic">
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:icon="@mipmap/logo_final"
+        android:label="SC MUSIC"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".LoginActivity">
+        <activity android:name="com.example.SCMusic.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MenuActivity" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".RegisterActivity" />
-
-        <activity android:name=".BookingActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+        <activity android:name="com.example.SCMusic.MenuActivity" />
+        <activity android:name="com.example.SCMusic.MainActivity" />
+        <activity android:name="com.example.SCMusic.RegisterActivity" />
+        <activity android:name="com.example.SCMusic.Guide"></activity>
+        <activity android:name="com.example.SCMusic.BookingActivity">
         </activity>
 
         <meta-data

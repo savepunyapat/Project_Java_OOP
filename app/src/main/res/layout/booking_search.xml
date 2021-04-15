@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/splash_1">
@@ -138,7 +139,7 @@
     <LinearLayout
         android:id="@+id/LayoutHide"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="224dp"
         android:orientation="horizontal"
         android:visibility="invisible">
 
@@ -152,8 +153,8 @@
                 android:id="@+id/Lay1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
                 android:background="#26000000"
+                android:gravity="center_horizontal"
                 android:orientation="horizontal">
 
                 <LinearLayout
@@ -170,8 +171,7 @@
                     <LinearLayout
                         android:layout_width="136dp"
                         android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        >
+                        android:orientation="vertical">
 
                         <TextView
                             android:id="@+id/timeShow1"
@@ -199,7 +199,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="ยกเลิก" />
+                    android:text="ยกเลิก"
+                    android:visibility="invisible" />
 
             </LinearLayout>
 
@@ -207,8 +208,8 @@
                 android:id="@+id/Lay2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center_horizontal"
                 android:background="#26000000"
+                android:gravity="center_horizontal"
                 android:orientation="horizontal">
 
                 <LinearLayout
@@ -253,7 +254,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="ยกเลิก" />
+                    android:text="ยกเลิก"
+                    android:visibility="invisible" />
 
             </LinearLayout>
 
@@ -261,8 +263,8 @@
                 android:id="@+id/Lay3"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center_horizontal"
                 android:background="#26000000"
+                android:gravity="center_horizontal"
                 android:orientation="horizontal">
 
                 <LinearLayout
@@ -307,12 +309,29 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="ยกเลิก" />
+                    android:text="ยกเลิก"
+                    android:visibility="invisible" />
 
             </LinearLayout>
 
         </LinearLayout>
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/faqBt"
+            android:layout_width="132dp"
+            android:layout_height="76dp"
+            android:drawableEnd="@drawable/ic_baseline_help_24"
+            android:gravity="center"
+            android:text="วิธีการใช้งาน"
+            android:textSize="18sp" />
     </LinearLayout>
 
 
