@@ -305,7 +305,7 @@ public class BookingActivity extends Activity {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(BookingActivity.this);
-                builder.setMessage("คุณจะจองห้องซ้อมใข่หรือไม่?");
+                builder.setMessage("คุณจะจองห้องซ้อมใช่หรือไม่?");
                 builder.setPositiveButton("ใช่", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         db.addValueEventListener(new ValueEventListener() {
@@ -377,7 +377,7 @@ public class BookingActivity extends Activity {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(BookingActivity.this);
-                builder.setMessage("คุณจะจองห้องซ้อมใข่หรือไม่?");
+                builder.setMessage("คุณจะจองห้องซ้อมใช่หรือไม่?");
                 builder.setPositiveButton("ใช่", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         db.addValueEventListener(new ValueEventListener() {
